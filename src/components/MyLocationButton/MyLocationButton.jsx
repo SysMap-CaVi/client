@@ -9,7 +9,7 @@ function MyLocationButton() {
   useEffect(() => {
     if (myLocation) {
       map.flyTo([myLocation.lat, myLocation.lng], 17);
-      L.marker(myLocation).addTo(map).bindPopup("Sua localização").openPopup()
+      L.marker(myLocation).addTo(map);
     }
   }, [myLocation, map]);
 

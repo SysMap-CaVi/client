@@ -10,7 +10,7 @@ const LeafletGeocoder = () => {
     })
       .on("markgeocode", function (e) {
         var latlng = e.geocode.center;
-        L.marker(latlng).addTo(map).bindPopup(e.geocode.name).openPopup();
+        L.marker(latlng).addTo(map);
         map.fitBounds(e.geocode.bbox);
       })
       .addTo(map);

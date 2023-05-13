@@ -1,12 +1,10 @@
-import React, { useEffect } from "react";
-import L, { icon } from "leaflet";
+import { useEffect } from "react";
+import L from "leaflet";
 import "leaflet-routing-machine";
 import "leaflet-routing-machine/dist/leaflet-routing-machine.css";
 import "leaflet-control-geocoder";
 import "leaflet-control-geocoder/dist/Control.Geocoder.css";
 import { useMap } from "react-leaflet";
-import stores from "../../mocks/mocks";
-import store from "../../assets/icons/store.ico";
 
 const RoutingMachine = () => {
   const map = useMap();
@@ -17,18 +15,13 @@ const RoutingMachine = () => {
     defaultMarkGeocode: true,
   })
 
-  const customIcon = new L.Icon({
-    iconUrl: store,
-    iconSize: [40, 40],
-  });
-
   useEffect(() => {
     geocoder.on("markgeocode", function (e) {
         var latlng = e.geocode.center;
         L.marker(latlng)
         .addTo(map)
         .bindPopup(e.geocode.name)
-        .openPopup();
+        .openPopup().closePopup();
         map.fitBounds(e.geocode.bbox)
 
         // stores.map((store, index) => (

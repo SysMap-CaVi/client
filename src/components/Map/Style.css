@@ -20,3 +20,69 @@
 .map-container {
   width: 100%;
 }
+
+/* POPUP */
+.leaflet-popup {
+  width: 350px;
+  position: absolute;
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: FireSans;
+}
+.leaflet-popup-content-wrapper {
+  text-align: left;
+  padding: 0 !important;
+  border-radius: 30px !important;
+}
+
+.leaflet-popup-content {
+  width: 100% !important;
+  margin: 0 !important;
+  line-height: 1.3;
+  min-height: 1px;
+}
+
+.popup-text {
+  padding: 20px;
+}
+
+.popup-text h3 {
+  color: #330000;
+}
+
+.popup-text span {
+  font-weight: 500;
+}
+
+.popup-button {
+  font-family: FireSans;
+  display: flex;
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
+  padding: 20px;
+  background-color: #fc021e;
+  border-radius: 0 0 30px 30px;
+}
+.button-text {
+  width: 90%;
+  margin: 0 0 -20px 0px;
+}
+
+.button-text h4, p {
+  color: #ffa50d;
+  font-weight: 700;
+}
+.button-text span {
+  color: #fff;
+}
+
+.button-img {
+  display: flex;
+  justify-content: flex-end;
+  width: 10%;
+}
+
+.button-img img {
+  width: 80%;
+}
