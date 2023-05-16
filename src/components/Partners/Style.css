@@ -1,0 +1,52 @@
+.container {
+  display: flex;
+  justify-content: center;
+  background-color: #fff;
+  width: 100%;
+  height: 25vh;
+}
+.partners-slider {
+  width: 65%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.partners-slider .item img {
+  width: 80%;
+  margin: 0 0 0 38px;
+}
+
+.react-multiple-carousel__arrow--left::before{
+  background-image: url("../../assets/icons/gray-arrow.svg");
+  background-color: transparent;
+  transform: rotate(180deg);
+  content: "" !important;
+  left: -20px;
+}
+.react-multiple-carousel__arrow:hover {
+  background: transparent;
+}
+
+.react-multiple-carousel__arrow {
+  background-color: transparent;
+}
+
+.react-multiple-carousel__arrow--right::before {
+  background-image: url("../../assets/icons/gray-arrow.svg");
+  content: "" !important;
+  right: -50px;
+}
+
+.react-multiple-carousel__arrow--left::before,
+.react-multiple-carousel__arrow--right::before {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 20px; 
+  height: 20px; 
+}
+
+.react-multiple-carousel__arrow--left::before,
+.react-multiple-carousel__arrow--right::before {
+  background-color: transparent;
+}
