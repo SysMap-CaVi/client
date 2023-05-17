@@ -1,11 +1,4 @@
-import {
-  MapContainer,
-  TileLayer,
-  Icon,
-  Popup,
-  Marker,
-  useMap,
-} from "react-leaflet";
+import { MapContainer, TileLayer, Popup, Marker } from "react-leaflet";
 import L from "leaflet";
 import { stores } from "../../mocks/mocks";
 import catarinaPino from "../../assets/icons/catarina-pino.png";
@@ -17,11 +10,10 @@ import "leaflet/dist/leaflet.css";
 
 import { useState } from "react";
 
-import RoutingMachine from "../Route/RoutingMachine";
-import MyLocationButton from "../MyLocationButton/MyLocationButton";
+import LeafletGeocoder from "../GeoCoder/LeafletGeocoder";
+import MyLocation from "components/MyLocation/MyLocation";
 
-function MapRender() {
-
+function MapRender({userLocation}) {
   // PONTO CENTRAL DO MAPA QUANDO ACESSAR O SITE
   const [center, setCenter] = useState({
     lat: -16.7369911,
@@ -51,12 +43,13 @@ function MapRender() {
 
   return (
     <div className="map-container">
-      <MapContainer center={center} zoom={13}>
+      <MapContainer markerZoomAnimation={true} attributionControl={false} center={center} zoom={13}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <RoutingMachine />
+        <LeafletGeocoder/>
+        <MyLocation position={userLocation}/>
         {stores.map((store, index) => (
           <Marker
             key={index}
@@ -85,7 +78,6 @@ function MapRender() {
             </Popup>
           </Marker>
         ))}
-        <MyLocationButton />
       </MapContainer>
     </div>
   );
