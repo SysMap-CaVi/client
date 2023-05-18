@@ -4,15 +4,22 @@ import deskFrase from "../../assets/imgs/DESKTOP-FRASE.png";
 import catarina from "../../assets/imgs/DESKTOP-CATARINA.png";
 import instaIcon from "../../assets/icons/insta-icon.svg";
 import linkedinIcon from "../../assets/icons/linkedin-icon.svg";
+import Form from "../Form/Form";
 
-function Header({ getLocation }) {
-
+function Header({ getLocation, selectPosition, setSelectPosition }) {
   return (
     <header className="header-container">
       <div className="header-details">
         <img src={deskLogo} alt="logo" />
         <img src={deskFrase} alt="slogan" />
-        <button onClick={getLocation}>My Location</button>
+        <Form
+          selectPosition={selectPosition}
+          setSelectPosition={setSelectPosition}
+        />
+        <button onClick={getLocation}>
+          <span>CLIQUE AQUI</span>
+          <p>PARA DETECTAR <br/> SUA LOCALIZAÇÃO</p>
+        </button>
       </div>
       <div className="header-catarina">
         <img src={catarina} alt="catarina" />

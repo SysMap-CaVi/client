@@ -26,6 +26,40 @@
   margin-bottom: 20px;
 }
 
+.header-details button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 10rem;
+
+  border-radius: 20px;
+  background-color: #330000;
+  cursor: pointer;
+  border: none;
+  margin-top: 10px;
+}
+
+.header-details button span {
+  color: #fff;
+  font-family: FireSans;
+  font-weight: 700;
+  font-size: 1.5em;
+  padding: 5px;
+}
+
+.header-details button p {
+  width: 100%;
+  color: #330000;
+  background-color: #ffa50d;
+  font-family: FireSans;
+  font-weight: 700;
+  font-size: 1em;
+  border-radius: 0 0 15px 15px;
+  padding: 5px;
+  
+}
+
 .header-catarina {
   height: 100%;
   width: 30%;
