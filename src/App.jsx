@@ -7,6 +7,7 @@ import MapRender from "./components/Map/MapRender";
 
 function App() {
   const [userLocation, setUserLocation] = useState(null);
+  const [selectPosition, setSelectPosition] = useState(null);
 
   const getLocation = () => {
     if (navigator.geolocation) {
@@ -30,8 +31,12 @@ function App() {
 
   return (
     <div className="App">
-      <Header getLocation={getLocation} />
-      <MapRender userLocation={userLocation} />
+      <Header
+        getLocation={getLocation}
+        selectPosition={selectPosition}
+        setSelectPosition={setSelectPosition}
+      />
+      <MapRender userLocation={userLocation} selectPosition={selectPosition} />
       <Partners />
       <Footer />
     </div>
