@@ -2,6 +2,7 @@ import "./Style.css";
 import deskLogo from "../../assets/imgs/DESKTOP-LOGO.png";
 import deskFrase from "../../assets/imgs/DESKTOP-FRASE.png";
 import catarina from "../../assets/imgs/DESKTOP-CATARINA.png";
+import catarinaMobile from "../../assets/imgs/MOBILE-CATARINA.png"
 import instaIcon from "../../assets/icons/insta-icon.svg";
 import linkedinIcon from "../../assets/icons/linkedin-icon.svg";
 import Form from "../Form/Form";
@@ -11,15 +12,18 @@ function Header({ getLocation, selectPosition, setSelectPosition }) {
     <header className="header-container">
       <div className="header-details">
         <img src={deskLogo} alt="logo" />
+        <img src={catarinaMobile} alt="catarina" className="catarina-mobile" />
         <img src={deskFrase} alt="slogan" />
+        <button onClick={getLocation}>
+          <span>CLIQUE AQUI</span>
+          <p>
+            PARA DETECTAR <br /> SUA LOCALIZAÇÃO
+          </p>
+        </button>
         <Form
           selectPosition={selectPosition}
           setSelectPosition={setSelectPosition}
         />
-        <button onClick={getLocation}>
-          <span>CLIQUE AQUI</span>
-          <p>PARA DETECTAR <br/> SUA LOCALIZAÇÃO</p>
-        </button>
       </div>
       <div className="header-catarina">
         <img src={catarina} alt="catarina" />

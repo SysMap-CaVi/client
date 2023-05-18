@@ -12,10 +12,9 @@
 
 .header-details {
   display: flex;
-  flex-wrap: wrap;
   flex-direction: column;
   width: 50%;
-  justify-content: center;
+  padding-top: 30px;
   align-items: center;
   font-size: 80%;
   height: 100%;
@@ -32,12 +31,16 @@
   align-items: center;
   flex-wrap: wrap;
   width: 10rem;
-
   border-radius: 20px;
   background-color: #330000;
   cursor: pointer;
   border: none;
-  margin-top: 10px;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease;
+}
+
+.header-details button:hover {
+  transform: scale(1.1);
 }
 
 .header-details button span {
@@ -57,7 +60,6 @@
   font-size: 1em;
   border-radius: 0 0 15px 15px;
   padding: 5px;
-  
 }
 
 .header-catarina {
@@ -92,14 +94,49 @@
 }
 
 @media (max-width: 1000px) {
-    .header-catarina img {
-        width: 25rem;
-    }
+  .header-catarina img {
+    width: 25rem;
+  }
 }
 
 @media (max-width: 800px) {
-    .header-catarina img {
-        width: 20rem;
-        padding-top: 100px;
-    }
+  .header-catarina img {
+    width: 22rem;
+    padding-top: 50px;
+  }
+}
+
+@media (max-width: 750px) {
+  .header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    height: 45rem;
+    width: 100%;
+    background-image: url("../../assets/imgs/MOBILE-BG.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: repeat;
+  }
+
+  .header-catarina {
+    display: none;
+  }
+
+  .header-icons {
+    display: none;
+  }
+
+  .header-corda {
+    height: 1.1em;
+    margin-bottom: -2px;
+  }
+}
+
+@media (min-width: 750px) {
+  .catarina-mobile {
+    display: none;
+  }
 }

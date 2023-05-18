@@ -1,6 +1,6 @@
 import { useState } from "react";
-import yellowPino from "../../assets/icons/yellow-pino.svg"
-import whiteArrow from "../../assets/icons/white-arrow.svg"
+import yellowPino from "../../assets/icons/yellow-pino.svg";
+import whiteArrow from "../../assets/icons/white-arrow.svg";
 import "./Style.css";
 
 const NOMINATIM_BASE_URL = "https://nominatim.openstreetmap.org/search?";
@@ -14,8 +14,15 @@ export default function Form(props) {
   const { selectPosition, setSelectPosition } = props;
   const [searchText, setSearchText] = useState("");
   const [listPlace, setListPlace] = useState([]);
+  const [isListVisible, setIsListVisible] = useState(true);
 
-  const handleSearch = () => {
+  const handleItemClick = (item) => {
+    setSelectPosition(item);
+    setIsListVisible(false);
+  };
+
+  const handleSearch = (e) => {
+    e.preventDefault();
     const searchParams = {
       ...params,
       q: searchText,
@@ -25,6 +32,8 @@ export default function Form(props) {
       method: "GET",
       redirect: "follow",
     };
+
+    setIsListVisible(true)
 
     console.log("teste1", props);
 
@@ -38,48 +47,43 @@ export default function Form(props) {
   };
 
   return (
-    <div className="form-container">
-      <div className="form">
-        <img src={yellowPino} alt="yellow-pin" />
-        <input
-          type="text"
-          value={searchText}
-          placeholder="Digite seu endereço aqui"
-          onChange={(event) => {
-          setSearchText(event.target.value);
-          }}
-        />
-        <button onClick={handleSearch}>
-          <img src={whiteArrow} alt="Seta" />
-        </button>
+    <>
+      <div className="form-container">
+        <form className="form" onClick={handleSearch}>
+          <img src={yellowPino} alt="yellow-pin" />
+          <input
+            type="text"
+            value={searchText}
+            placeholder="Digite seu endereço aqui"
+            onChange={(event) => {
+              setSearchText(event.target.value);
+            }}
+          />
+          <button type="submit">
+            <img src={whiteArrow} alt="Seta"/>
+          </button>
+        </form>
       </div>
       <div className="list-container">
-        <ul>
-          {listPlace.map((item) => {
-            return (
-              <li key={item?.place_id}>
-                <div
-                  onClick={() => {
-                    setSelectPosition(item);
-                  }}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    cursor: "pointer",
-                  }}
-                >
-                  <img
-                    src="./placeholder.png"
-                    alt="Placeholder"
-                    style={{ width: 38, height: 38 }}
-                  />
-                  <p>{item?.display_name}</p>
-                </div>
-              </li>
-            );
-          })}
-        </ul>
+        {isListVisible && (
+          <ul>
+            {listPlace.map((item) => {
+              return (
+                <li key={item?.place_id}>
+                  <div
+                    className="list-item"
+                    onClick={() => {
+                      handleItemClick(item);
+                    }}
+                  >
+                    <p>{item?.display_name}</p>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        )}
       </div>
-    </div>
+    </>
   );
 }
