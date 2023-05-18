@@ -66,6 +66,10 @@ function MapRender({ userLocation, selectPosition }) {
   //   });
   // };
 
+  const redirectGoogleMaps = (destino) => {
+    window.open("https://maps.google.com/maps?q=" + destino, "_blank")
+  };
+
   return (
     <div className="map-container">
       <MapContainer
@@ -93,7 +97,9 @@ function MapRender({ userLocation, selectPosition }) {
                     <h3>{store.address}</h3>
                     <span>{store.cep}</span>
                   </div>
-                  <button className="popup-button">
+                  <button className="popup-button" target="blank" onClick={() => {
+                      redirectGoogleMaps(store.cep)
+                    }}>
                     <div className="button-text">
                       <h4>{store.name}</h4>
                       <span>{store.address}</span>
