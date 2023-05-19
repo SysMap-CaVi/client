@@ -1,9 +1,13 @@
+// REACT
 import { useState } from "react";
+// ÍCONES
 import yellowPino from "../../assets/icons/yellow-pino.svg";
 import whiteArrow from "../../assets/icons/white-arrow.svg";
+// CSS
 import "./Style.css";
-
+// API NOMINATIM - para encontrar latitude e longitude dos endereços digitados
 const NOMINATIM_BASE_URL = "https://nominatim.openstreetmap.org/search?";
+// Parâmetros da URL para
 const params = {
   q: "",
   format: "json",
@@ -16,11 +20,13 @@ export default function Form(props) {
   const [listPlace, setListPlace] = useState([]);
   const [isListVisible, setIsListVisible] = useState(true);
 
+  // Função para clicar no item da lista selecionar o item e desaparecer a lista
   const handleItemClick = (item) => {
     setSelectPosition(item);
     setIsListVisible(false);
   };
-
+  
+  // Função para realizar fetch na API
   const handleSearch = (e) => {
     e.preventDefault();
     const searchParams = {

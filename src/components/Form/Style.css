@@ -1,3 +1,4 @@
+/* STYLE DO INPUT */
 .form-container {
   display: flex;
   justify-content: center;
@@ -56,28 +57,7 @@
   padding: 0;
 }
 
-@media (min-width: 1800px) {
-  .form {
-    width: 65%;
-  }
-
-  .form button {
-    width: 14%;
-  }
-}
-
-
-
-@media (max-width: 800px) {
-  .form input {
-    font-size: 1em;
-  }
-
-  .form input::placeholder {
-    font-size: 1em;
-  }
-}
-
+/* STYLE DA LISTA */
 .list-container {
   display: flex;
   width: 50%;
@@ -107,6 +87,27 @@
   font-weight: 400;
 }
 
+/* RESPONSIVIDADE */
+@media (min-width: 1800px) {
+  .form {
+    width: 65%;
+  }
+
+  .form button {
+    width: 14%;
+  }
+}
+
+@media (max-width: 800px) {
+  .form input {
+    font-size: 1em;
+  }
+
+  .form input::placeholder {
+    font-size: 1em;
+  }
+}
+
 @media (max-width: 1000px) {
   .form {
     width: 80%;
@@ -129,5 +130,3 @@
     width: 78%;
   }
 }
-
-

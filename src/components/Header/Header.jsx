@@ -1,11 +1,15 @@
-import "./Style.css";
+// ÍCONES E IMAGENS
 import deskLogo from "../../assets/imgs/DESKTOP-LOGO.png";
 import deskFrase from "../../assets/imgs/DESKTOP-FRASE.png";
 import catarina from "../../assets/imgs/DESKTOP-CATARINA.png";
 import catarinaMobile from "../../assets/imgs/MOBILE-CATARINA.png"
 import instaIcon from "../../assets/icons/insta-icon.svg";
 import linkedinIcon from "../../assets/icons/linkedin-icon.svg";
+// CSS
+import "./Style.css";
+// Formulário do input
 import Form from "../Form/Form";
+
 
 function Header({ getLocation, selectPosition, setSelectPosition }) {
   return (

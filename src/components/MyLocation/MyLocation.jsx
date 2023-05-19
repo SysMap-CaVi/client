@@ -1,6 +1,8 @@
+// React + React Leaflet
 import { useEffect } from "react";
 import { useMap, Marker } from "react-leaflet";
 
+// Função do botão para animar o mapa até sua localização
 function MyLocation({position}) {
   const map = useMap();
 

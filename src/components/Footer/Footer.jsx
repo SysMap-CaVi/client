@@ -1,6 +1,7 @@
+// ÍCONES
 import instaIcon from "../../assets/icons/insta-icon.svg";
 import linkedinIcon from "../../assets/icons/linkedin-icon.svg";
-
+// CSS
 import "./Style.css";
 
 function Footer() {

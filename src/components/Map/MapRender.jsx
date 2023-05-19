@@ -1,20 +1,21 @@
+// REACT-LEAFLET
 import { MapContainer, TileLayer, Popup, Marker, useMap } from "react-leaflet";
 import L from "leaflet";
+// DADOS DAS LOJAS PARCEIRAS
 import { stores } from "../../mocks/mocks";
+// ÍCONES
 import catarinaPino from "../../assets/icons/catarina-pino.png";
 import yellowPino from "../../assets/icons/yellow-pino.svg";
 import whiteArrow from "../../assets/icons/white-arrow.svg";
+// CSS
 import "./Style.css";
-
 import "leaflet/dist/leaflet.css";
-import "leaflet-control-geocoder";
-import "leaflet-control-geocoder/dist/Control.Geocoder.css";
-
+// REACT
 import { useState, useEffect } from "react";
-
-import LeafletGeocoder from "../GeoCoder/LeafletGeocoder";
+// BOTÃO DE MINHA LOCALIZAÇÃO
 import MyLocation from "components/MyLocation/MyLocation";
 
+// Função para animar o mapa até a localização(lat, lon) do endereço digitado no input
 function ResetCenterView(props) {
   const { selectPosition } = props;
   const map = useMap();
@@ -26,7 +27,7 @@ function ResetCenterView(props) {
         animate: true,
         duration: 3,
         easeLinearity: 0.1,
-        zoom: 12,
+        zoom: 18,
       });
     }
   }, [selectPosition]);
@@ -58,14 +59,6 @@ function MapRender({ userLocation, selectPosition }) {
   });
   L.Marker.prototype.options.icon = userIcon;
 
-  // const createCustomClusterIcon = (cluster) => {
-  //   return new L.divIcon({
-  //     html: `<div class="cluster-icon">${cluster.getChildCount()}</div>`,
-  //     className: "custom-marker-cluster",
-  //     iconSize: L.point(30, 30, true),
-  //   });
-  // };
-
   const redirectGoogleMaps = (destino) => {
     window.open("https://maps.google.com/maps?q=" + destino, "_blank")
   };
@@ -82,7 +75,6 @@ function MapRender({ userLocation, selectPosition }) {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <LeafletGeocoder />
         <MyLocation position={userLocation} />
         {stores.map((store, index) => (
           <Marker

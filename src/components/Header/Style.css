@@ -93,6 +93,7 @@
   background-repeat: repeat;
 }
 
+/* RESPONSIVIDADE */
 @media (max-width: 1000px) {
   .header-catarina img {
     width: 25rem;

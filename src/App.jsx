@@ -6,9 +6,12 @@ import Header from "./components/Header/Header";
 import MapRender from "./components/Map/MapRender";
 
 function App() {
+  // State para enviar a localização(lat, lon) do usuário para o componente map
   const [userLocation, setUserLocation] = useState(null);
+  // State para enviar a localização(lat, lon) do lugar inserido no input
   const [selectPosition, setSelectPosition] = useState(null);
 
+  // Função para pegar localização do usuário
   const getLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
