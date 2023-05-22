@@ -61,17 +61,13 @@
 .list-container {
   display: flex;
   width: 50%;
-  background-color: #fff;
   z-index: 9999;
   margin-right: 25px;
+  margin-top: 5px;
 }
 
 .list-container li {
   list-style: none;
-}
-
-.list-container li:hover {
-  background-color: #f0f0f0;
 }
 
 .list-item {
@@ -79,6 +75,13 @@
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2), -2px -2px 4px rgba(0, 0, 0, 0.2);
   /* border: 1px solid #330000; */
   padding: 10px;
+  background-color: #fff;
+  border-radius: 20px;
+  margin-bottom: 2px;
+}
+
+.list-item:hover {
+  background-color: #f0f0f0;
 }
 
 .list-item p {
@@ -127,7 +130,11 @@
   }
 
   .list-container {
-    width: 78%;
+    width: 70%;
+  }
+
+  .list-item {
+    margin-top: 0;
   }
 }
 
