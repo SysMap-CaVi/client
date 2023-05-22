@@ -118,8 +118,12 @@
     width: 100%;
     background-image: url("../../assets/imgs/MOBILE-BG.png");
     background-position: center;
-    background-size: contain;
-    background-repeat: repeat;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .header-details {
+    width: 100%;
   }
 
   .header-catarina {
@@ -136,8 +140,19 @@
   }
 }
 
-@media (min-width: 750px) {
+@media (max-width: 500px) {
+  .header-container{
+    height: 70%;
+  }
+  .header-details img {
+    width: 60%;
+  }
+}
+
+@media (min-width: 751px) {
   .catarina-mobile {
     display: none;
   }
 }
+
+

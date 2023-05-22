@@ -123,10 +123,16 @@
 
 @media (max-width: 750px) {
   .form {
-    width: 100%;
+    width: 80%;
   }
 
   .list-container {
     width: 78%;
+  }
+}
+
+@media (max-width: 500px) {
+  .form {
+    margin-bottom: 20px;
   }
 }
