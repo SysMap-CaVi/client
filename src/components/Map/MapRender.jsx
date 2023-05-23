@@ -19,11 +19,12 @@ import MyLocation from "components/MyLocation/MyLocation";
 function ResetCenterView(props) {
   const { selectPosition } = props;
   const map = useMap();
-
+  console.log("teste 5", selectPosition);
+  const lat = selectPosition?.geometry.location.lat;
+  const lng = selectPosition?.geometry.location.lng;
   useEffect(() => {
     if (selectPosition) {
-      console.log("teste 5", selectPosition);
-      map.flyTo([selectPosition?.lat, selectPosition?.lon], 16, {
+      map.flyTo([lat, lng], 16, {
         animate: true,
         duration: 3,
         easeLinearity: 0.1,
@@ -33,13 +34,13 @@ function ResetCenterView(props) {
   }, [selectPosition]);
 
   return selectPosition === null ? null : (
-    <Marker position={[selectPosition?.lat, selectPosition?.lon]}>
+    <Marker position={[lat, lng]}>
     </Marker>
   );
 }
 
 function MapRender({ userLocation, selectPosition }) {
-  // console.log("teste 3", selectPosition);
+  console.log("teste 3", selectPosition);
   // PONTO CENTRAL DO MAPA QUANDO ACESSAR O SITE
   const [center, setCenter] = useState({
     lat: -16.7369911,

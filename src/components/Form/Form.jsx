@@ -5,13 +5,14 @@ import yellowPino from "../../assets/icons/yellow-pino.svg";
 import whiteArrow from "../../assets/icons/white-arrow.svg";
 // CSS
 import "./Style.css";
+
 // API NOMINATIM - para encontrar latitude e longitude dos endereços digitados
-const NOMINATIM_BASE_URL = "https://nominatim.openstreetmap.org/search?";
+const GOOGLE_API_URL = "https://maps.googleapis.com/maps/api/geocode/json?"
 // Parâmetros da URL para
 const params = {
-  q: "",
-  format: "json",
-  addressdetails: "addressdetails",
+  address: "",
+  // format: "json",
+  key: process.env.API_KEY
 };
 
 export default function Form(props) {
@@ -27,11 +28,13 @@ export default function Form(props) {
   };
   
   // Função para realizar fetch na API
-  const handleSearch = (e) => {
+  const handleSearch = async (e) => {
     e.preventDefault();
+    setIsListVisible(true)
+    
     const searchParams = {
       ...params,
-      q: searchText,
+      address: searchText,
     };
     const queryString = new URLSearchParams(searchParams).toString();
     const requestOptions = {
@@ -39,17 +42,26 @@ export default function Form(props) {
       redirect: "follow",
     };
 
-    setIsListVisible(true)
+    // console.log("teste1", props);
 
-    console.log("teste1", props);
+    // await fetch(`${GOOGLE_API_URL}${queryString}`, requestOptions)
+    //   .then((response) => response.text())
+    //   .then((result) => {
+    //     console.log(`${GOOGLE_API_URL}${queryString}`)
+    //     console.log("teste 2", JSON.parse(result));
+    //     setListPlace(JSON.parse(result));
+        
+    //   })
+    //   .catch((err) => console.log("err: ", err));
 
-    fetch(`${NOMINATIM_BASE_URL}${queryString}`, requestOptions)
-      .then((response) => response.text())
-      .then((result) => {
-        console.log("teste 2", JSON.parse(result));
-        setListPlace(JSON.parse(result));
-      })
-      .catch((err) => console.log("err: ", err));
+    try {
+      const response = await fetch(`${GOOGLE_API_URL}${queryString}`);
+      console.log(`${GOOGLE_API_URL}${queryString}`)
+      const data = await response.json();
+      setListPlace(data.results);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
   };
 
   return (
@@ -61,8 +73,8 @@ export default function Form(props) {
             type="text"
             value={searchText}
             placeholder="Digite seu endereço aqui"
-            onChange={(event) => {
-              setSearchText(event.target.value);
+            onChange={({target}) => {
+              setSearchText(target.value);
             }}
           />
           <button type="submit">
@@ -79,10 +91,11 @@ export default function Form(props) {
                   <div
                     className="list-item"
                     onClick={() => {
-                      handleItemClick(item);
+                      handleItemClick(item)
+                      console.log("teste 0", item);
                     }}
                   >
-                    <p>{item?.display_name}</p>
+                    <p>{item?.formatted_address}</p>
                   </div>
                 </li>
               );
