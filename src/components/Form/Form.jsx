@@ -11,7 +11,7 @@ const GOOGLE_API_URL = "https://maps.googleapis.com/maps/api/geocode/json?";
 // Parâmetros da URL para
 const params = {
   address: "",
-  key: "AIzaSyBEvdCubiMYZ6nQe1RozjD7cl-ag-GH_xs",
+  key: process.env.REACT_APP_API_KEY,
 };
 
 export default function Form(props) {
@@ -40,8 +40,6 @@ export default function Form(props) {
 
     try {
       const response = await fetch(`${GOOGLE_API_URL}${queryString}`);
-      console.log(`${GOOGLE_API_URL}${queryString}`);
-      console.log("teste 1000 " + process.env.API_KEY);
       const data = await response.json();
       setListPlace(data.results);
     } catch {
