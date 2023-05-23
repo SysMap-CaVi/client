@@ -40,6 +40,7 @@ export default function Form(props) {
 
     try {
       const response = await fetch(`${GOOGLE_API_URL}${queryString}`);
+      console.log("test 200 " + process.env.REACT_APP_API_KEY)
       const data = await response.json();
       setListPlace(data.results);
     } catch {
