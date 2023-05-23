@@ -7,12 +7,11 @@ import whiteArrow from "../../assets/icons/white-arrow.svg";
 import "./Style.css";
 
 // API NOMINATIM - para encontrar latitude e longitude dos endereços digitados
-const GOOGLE_API_URL = "https://maps.googleapis.com/maps/api/geocode/json?"
+const GOOGLE_API_URL = "https://maps.googleapis.com/maps/api/geocode/json?";
 // Parâmetros da URL para
 const params = {
   address: "",
-  // format: "json",
-  key: process.env.API_KEY
+  key: "AIzaSyBEvdCubiMYZ6nQe1RozjD7cl-ag-GH_xs",
 };
 
 export default function Form(props) {
@@ -26,59 +25,45 @@ export default function Form(props) {
     setSelectPosition(item);
     setIsListVisible(false);
   };
-  
+
   // Função para realizar fetch na API
   const handleSearch = async (e) => {
     e.preventDefault();
-    setIsListVisible(true)
-    
+    setIsListVisible(true);
+
     const searchParams = {
       ...params,
       address: searchText,
     };
+
     const queryString = new URLSearchParams(searchParams).toString();
-    const requestOptions = {
-      method: "GET",
-      redirect: "follow",
-    };
-
-    // console.log("teste1", props);
-
-    // await fetch(`${GOOGLE_API_URL}${queryString}`, requestOptions)
-    //   .then((response) => response.text())
-    //   .then((result) => {
-    //     console.log(`${GOOGLE_API_URL}${queryString}`)
-    //     console.log("teste 2", JSON.parse(result));
-    //     setListPlace(JSON.parse(result));
-        
-    //   })
-    //   .catch((err) => console.log("err: ", err));
 
     try {
       const response = await fetch(`${GOOGLE_API_URL}${queryString}`);
-      console.log(`${GOOGLE_API_URL}${queryString}`)
+      console.log(`${GOOGLE_API_URL}${queryString}`);
+      console.log("teste 1000 " + process.env.API_KEY);
       const data = await response.json();
       setListPlace(data.results);
-    } catch (error) {
-      console.error('Error fetching data:', error);
+    } catch {
+      (error) => console.error("Error fetching data:", error);
     }
   };
 
   return (
     <>
       <div className="form-container">
-        <form className="form" onClick={handleSearch}>
+        <form className="form" onSubmit={handleSearch}>
           <img src={yellowPino} alt="yellow-pin" />
           <input
             type="text"
             value={searchText}
             placeholder="Digite seu endereço aqui"
-            onChange={({target}) => {
+            onChange={({ target }) => {
               setSearchText(target.value);
             }}
           />
           <button type="submit">
-            <img src={whiteArrow} alt="Seta"/>
+            <img src={whiteArrow} alt="Seta" />
           </button>
         </form>
       </div>
@@ -91,7 +76,7 @@ export default function Form(props) {
                   <div
                     className="list-item"
                     onClick={() => {
-                      handleItemClick(item)
+                      handleItemClick(item);
                       console.log("teste 0", item);
                     }}
                   >
