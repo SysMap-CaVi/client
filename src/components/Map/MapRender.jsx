@@ -12,12 +12,10 @@ import MyLocation from "components/MyLocation/MyLocation";
 // Função para animar o mapa até a localização(lat, lon) do endereço digitado no input
 function ResetCenterView(props) {
   const { selectPosition } = props;
-
   const map = useMap();
 
   const lat = selectPosition?.geometry.location.lat;
   const lng = selectPosition?.geometry.location.lng;
-  
   useEffect(() => {
     if (selectPosition) {
       map.flyTo([lat, lng], 16, {
@@ -75,22 +73,22 @@ function MapRender({ userLocation, selectPosition }) {
         {stores.map((store, index) => (
           <Marker
             key={index}
-            position={[store.lat, store.lgn]}
+            position={[store.latitude, store.longitude]}
             icon={storeIcon}
           >
             <Popup className="leaflet-popup" closeButton={false}>
               <div className="leaflet-popup-content-wrapper">
                 <div className="leaflet-popup-content">
                   <div className="popup-text">
-                    <h3>{store.address}</h3>
-                    <span>{store.cep}</span>
+                    <h3>{store.Parceiro}</h3>
+                    <span>{store.CEP}</span>
                   </div>
                   <button className="popup-button" target="blank" onClick={() => {
-                      redirectGoogleMaps(store.cep)
+                      redirectGoogleMaps([store.Parceiro, store.Rua, store.Bairro, store.Cidade, store.Estado])
                     }}>
                     <div className="button-text">
-                      <h4>{store.name}</h4>
-                      <span>{store.address}</span>
+                      <h4>{store.Parceiro}</h4>
+                      <span>{[store.Rua,", ", store.Bairro,", ", store.Cidade,", ", store.Estado]}</span>
                       <p>COMO CHEGAR</p>
                     </div>
                     <div className="button-img">
