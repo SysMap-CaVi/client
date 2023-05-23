@@ -1,7 +1,5 @@
-// React Carousel
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-// Imagens dos parceiros
 import marcaBat from "../../assets/imgs/MARCA-BAT.png";
 import marcaBrt from "../../assets/imgs/MARCA-BRT.png";
 import marcaCat from "../../assets/imgs/MARCA-CAT.png";
@@ -11,7 +9,6 @@ import marcaPda from "../../assets/imgs/MARCA-PDA.png";
 import marcaPra from "../../assets/imgs/MARCA-PRA.png";
 import marcaSad from "../../assets/imgs/MARCA-SAD.png";
 import marcaTat from "../../assets/imgs/MARCA-TAT.png";
-// CSS
 import "./Style.css";
 
 function Partners() {

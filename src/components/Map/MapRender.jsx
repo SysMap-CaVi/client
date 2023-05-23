@@ -1,27 +1,23 @@
-// REACT-LEAFLET
 import { MapContainer, TileLayer, Popup, Marker, useMap } from "react-leaflet";
 import L from "leaflet";
-// DADOS DAS LOJAS PARCEIRAS
 import { stores } from "../../mocks/mocks";
-// ÍCONES
 import catarinaPino from "../../assets/icons/catarina-pino.png";
 import yellowPino from "../../assets/icons/yellow-pino.svg";
 import whiteArrow from "../../assets/icons/white-arrow.svg";
-// CSS
 import "./Style.css";
 import "leaflet/dist/leaflet.css";
-// REACT
 import { useState, useEffect } from "react";
-// BOTÃO DE MINHA LOCALIZAÇÃO
 import MyLocation from "components/MyLocation/MyLocation";
 
 // Função para animar o mapa até a localização(lat, lon) do endereço digitado no input
 function ResetCenterView(props) {
   const { selectPosition } = props;
+
   const map = useMap();
-  console.log("teste 5", selectPosition);
+
   const lat = selectPosition?.geometry.location.lat;
   const lng = selectPosition?.geometry.location.lng;
+  
   useEffect(() => {
     if (selectPosition) {
       map.flyTo([lat, lng], 16, {
@@ -40,7 +36,6 @@ function ResetCenterView(props) {
 }
 
 function MapRender({ userLocation, selectPosition }) {
-  console.log("teste 3", selectPosition);
   // PONTO CENTRAL DO MAPA QUANDO ACESSAR O SITE
   const [center, setCenter] = useState({
     lat: -16.7369911,

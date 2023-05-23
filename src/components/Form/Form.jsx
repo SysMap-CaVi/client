@@ -1,18 +1,8 @@
-// REACT
 import { useState } from "react";
-// ÍCONES
 import yellowPino from "../../assets/icons/yellow-pino.svg";
 import whiteArrow from "../../assets/icons/white-arrow.svg";
-// CSS
 import "./Style.css";
-
-// API NOMINATIM - para encontrar latitude e longitude dos endereços digitados
-const GOOGLE_API_URL = "https://maps.googleapis.com/maps/api/geocode/json?";
-// Parâmetros da URL para
-const params = {
-  address: "",
-  key: process.env.REACT_APP_API_KEY,
-};
+import { fetchPlaces } from "../../api/api";
 
 export default function Form(props) {
   const { selectPosition, setSelectPosition } = props;
@@ -30,22 +20,13 @@ export default function Form(props) {
   const handleSearch = async (e) => {
     e.preventDefault();
     setIsListVisible(true);
-
-    const searchParams = {
-      ...params,
-      address: searchText,
-    };
-
-    const queryString = new URLSearchParams(searchParams).toString();
-
+    
     try {
-      const response = await fetch(`${GOOGLE_API_URL}${queryString}`);
-      console.log(`${GOOGLE_API_URL}${queryString}`)
-      console.log("test 200 " + process.env.REACT_APP_API_KEY)
-      const data = await response.json();
-      setListPlace(data.results);
+      const places = await fetchPlaces(searchText);
+      setListPlace(places);
     } catch {
       (error) => console.error("Error fetching data:", error);
+      setListPlace([]);
     }
   };
 
@@ -77,7 +58,6 @@ export default function Form(props) {
                     className="list-item"
                     onClick={() => {
                       handleItemClick(item);
-                      console.log("teste 0", item);
                     }}
                   >
                     <p>{item?.formatted_address}</p>
