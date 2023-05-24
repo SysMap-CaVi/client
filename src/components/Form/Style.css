@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  width: 100%;
+  width: 40rem;
   height: 5em;
   background-color: transparent;
 }
@@ -60,10 +60,11 @@
 /* STYLE DA LISTA */
 .list-container {
   display: flex;
+  justify-content: center;
   width: 50%;
   z-index: 9999;
-  margin-right: 25px;
   margin-top: 5px;
+  margin-bottom: 10px;
 }
 
 .list-container li {
@@ -72,6 +73,7 @@
 
 .list-item {
   display: flex;
+  width: 380px;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2), -2px -2px 4px rgba(0, 0, 0, 0.2);
   /* border: 1px solid #330000; */
   padding: 10px;
@@ -81,7 +83,7 @@
 }
 
 .list-item:hover {
-  background-color: #f0f0f0;
+  background-color: #bebcbc;
 }
 
 .list-item p {
@@ -91,55 +93,26 @@
 }
 
 /* RESPONSIVIDADE */
-@media (min-width: 1800px) {
-  .form {
-    width: 65%;
-  }
-
-  .form button {
-    width: 14%;
-  }
-}
-
-@media (max-width: 800px) {
-  .form input {
-    font-size: 1em;
-  }
-
-  .form input::placeholder {
-    font-size: 1em;
-  }
-}
-
 @media (max-width: 1000px) {
-  .form {
-    width: 80%;
-  }
-
-  .form button img {
-    width: 20px;
-  }
   .list-container {
     width: 62%;
   }
 }
 
-@media (max-width: 750px) {
-  .form {
-    width: 80%;
+@media (max-width: 650px) {
+  .form-container {
+    width: 100%;
   }
 
-  .list-container {
-    width: 70%;
+  .form {
+    width: 85%;
+  }
+
+  .form img {
+    width: 40px;
   }
 
   .list-item {
-    margin-top: 0;
-  }
-}
-
-@media (max-width: 500px) {
-  .form {
-    margin-bottom: 20px;
+    width: 240px;
   }
 }
